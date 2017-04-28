@@ -41,7 +41,7 @@ inline shared_ptr<Edge<IdType, WeightType, DataType>> create_edge(
 /*! Function creates an instance of a Graph. Returns a shared_ptr back to the user. User should
 use auto keyword to catch this pointer */
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
-requires Comparable<I> && Numeric<W>
+requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
 inline shared_ptr<GraphType<I, W, D>> create_graph(){
 	return GraphType<I, W, D>::create_graph();
 }

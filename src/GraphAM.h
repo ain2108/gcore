@@ -49,9 +49,9 @@ public:
 	}
 
 	// /* Checks if the node is in the graph */
-	// inline bool has_node(const shared_ptr<Node<IdType, DataType>> x){
-	// 	return node_in_graph(x);
-	// }
+	inline bool has_node(const shared_ptr<Node<IdType, DataType>> x){
+		return node_in_graph(x);
+	}
 
 
 	// bool has_edge(const shared_ptr<Node<IdType, DataType>> src, const WeightType w, 
