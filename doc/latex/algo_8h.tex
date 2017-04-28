@@ -1,0 +1,32 @@
+\hypertarget{algo_8h}{}\section{algo.\+h File Reference}
+\label{algo_8h}\index{algo.\+h@{algo.\+h}}
+{\ttfamily \#include \char`\"{}Graph.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$list$>$}\newline
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{algo_8h_a1303e8be32ee2be0e2ee4f9d41d2475d}\label{algo_8h_a1303e8be32ee2be0e2ee4f9d41d2475d}} 
+{\footnotesize template$<$typename I , typename W , typename D $>$ }\\using {\bfseries Edge\+SP} = shared\+\_\+ptr$<$ \hyperlink{class_edge}{Edge}$<$ I, W, D $>$ $>$
+\item 
+\mbox{\Hypertarget{algo_8h_a8fe8040fda5a95749233c20f18c63434}\label{algo_8h_a8fe8040fda5a95749233c20f18c63434}} 
+{\footnotesize template$<$typename I , typename D $>$ }\\using {\bfseries Node\+SP} = shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ I, D $>$ $>$
+\item 
+\mbox{\Hypertarget{algo_8h_a9d12c018b8556c966296fd96aa3550d6}\label{algo_8h_a9d12c018b8556c966296fd96aa3550d6}} 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\using {\bfseries Graph\+SP} = shared\+\_\+ptr$<$ Graph\+Type$<$ I, W, D $>$ $>$
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\Graph\+SP$<$ I, W, D, Graph\+Type $>$ \hyperlink{algo_8h_a409d4769edeed5bbe1842ff3763dc8a0}{dfs} (Graph\+SP$<$ I, W, D, Graph\+Type $>$ graph, Node\+SP$<$ I, D $>$ root)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{algo_8h_a409d4769edeed5bbe1842ff3763dc8a0}\label{algo_8h_a409d4769edeed5bbe1842ff3763dc8a0}} 
+\index{algo.\+h@{algo.\+h}!dfs@{dfs}}
+\index{dfs@{dfs}!algo.\+h@{algo.\+h}}
+\subsubsection{\texorpdfstring{dfs()}{dfs()}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ \\
+Graph\+SP$<$I, W, D, Graph\+Type$>$ dfs (\begin{DoxyParamCaption}\item[{Graph\+SP$<$ I, W, D, Graph\+Type $>$}]{graph,  }\item[{Node\+SP$<$ I, D $>$}]{root }\end{DoxyParamCaption})}
+
+The D\+FS routine. Returns an instance of Graph that represnets a tree created by the dfs from \hyperlink{class_node}{Node} root to every other \hyperlink{class_node}{Node} in Graph graph 

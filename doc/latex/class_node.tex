@@ -1,0 +1,81 @@
+\hypertarget{class_node}{}\section{Node$<$ Id\+Type, Data\+Type $>$ Class Template Reference}
+\label{class_node}\index{Node$<$ Id\+Type, Data\+Type $>$@{Node$<$ Id\+Type, Data\+Type $>$}}
+
+
+{\ttfamily \#include $<$Node.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_node_a34e663ba0743b92d8c4c973d79c31167}\label{class_node_a34e663ba0743b92d8c4c973d79c31167}} 
+using {\bfseries id\+\_\+type} = Id\+Type
+\item 
+\mbox{\Hypertarget{class_node_a67483d21d12ec195270a4a2f67cdb15c}\label{class_node_a67483d21d12ec195270a4a2f67cdb15c}} 
+using {\bfseries data\+\_\+type} = Data\+Type
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_node_a28ce892501d4a71ec6b09089fb26b364}\label{class_node_a28ce892501d4a71ec6b09089fb26b364}} 
+{\bfseries Node} (Id\+Type id, Data\+Type $\ast$data)
+\item 
+\mbox{\Hypertarget{class_node_af68de58ae2ec8491178bbc5772ef0307}\label{class_node_af68de58ae2ec8491178bbc5772ef0307}} 
+{\bfseries Node} (\hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$ const \&)=delete
+\item 
+\mbox{\Hypertarget{class_node_a91a00c2113b013f055c3cae5cd14aed4}\label{class_node_a91a00c2113b013f055c3cae5cd14aed4}} 
+void {\bfseries operator=} (\hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$ const \&)=delete
+\item 
+Id\+Type \hyperlink{class_node_a86f1bba05a74b854ba12dc3ac3d1f491}{get\+\_\+id} () const
+\item 
+Data\+Type $\ast$ \hyperlink{class_node_abd0500a7483af56c57087d408a0dd46d}{get\+\_\+data} ()
+\item 
+void \hyperlink{class_node_a29f690cf38cfd834ebc6ad6037275cf0}{set\+\_\+data} (Data\+Type $\ast$data)
+\item 
+\mbox{\Hypertarget{class_node_a6c7ea4284c2fb31048de0819681c6c73}\label{class_node_a6c7ea4284c2fb31048de0819681c6c73}} 
+bool {\bfseries operator==} (const \hyperlink{class_node}{Node} \&rhs)
+\item 
+\mbox{\Hypertarget{class_node_a40f154dae3291d8ad01543ebdcdbf783}\label{class_node_a40f154dae3291d8ad01543ebdcdbf783}} 
+void {\bfseries print\+\_\+node} () const
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_node_adfb73b3f9101049a2d1061d5e9c6f917}\label{class_node_adfb73b3f9101049a2d1061d5e9c6f917}} 
+static shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$ $>$ {\bfseries create\+\_\+node} (Id\+Type id, Data\+Type $\ast$data)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Id\+Type, typename Data\+Type$>$\newline
+class Node$<$ Id\+Type, Data\+Type $>$}
+
+The \hyperlink{class_node}{Node} class represents a \hyperlink{class_node}{Node}. Create Nodes by calling the appropriate creating funtion. After Nodes are created, one has to add them to the graph object (track them if you will). 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_node_abd0500a7483af56c57087d408a0dd46d}\label{class_node_abd0500a7483af56c57087d408a0dd46d}} 
+\index{Node@{Node}!get\+\_\+data@{get\+\_\+data}}
+\index{get\+\_\+data@{get\+\_\+data}!Node@{Node}}
+\subsubsection{\texorpdfstring{get\+\_\+data()}{get\_data()}}
+{\footnotesize\ttfamily template$<$typename Id\+Type , typename Data\+Type $>$ \\
+Data\+Type$\ast$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$\+::get\+\_\+data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function returns the pointer to the object associated with the given node \mbox{\Hypertarget{class_node_a86f1bba05a74b854ba12dc3ac3d1f491}\label{class_node_a86f1bba05a74b854ba12dc3ac3d1f491}} 
+\index{Node@{Node}!get\+\_\+id@{get\+\_\+id}}
+\index{get\+\_\+id@{get\+\_\+id}!Node@{Node}}
+\subsubsection{\texorpdfstring{get\+\_\+id()}{get\_id()}}
+{\footnotesize\ttfamily template$<$typename Id\+Type , typename Data\+Type $>$ \\
+Id\+Type \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$\+::get\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function returns the id of a \hyperlink{class_node}{Node} \mbox{\Hypertarget{class_node_a29f690cf38cfd834ebc6ad6037275cf0}\label{class_node_a29f690cf38cfd834ebc6ad6037275cf0}} 
+\index{Node@{Node}!set\+\_\+data@{set\+\_\+data}}
+\index{set\+\_\+data@{set\+\_\+data}!Node@{Node}}
+\subsubsection{\texorpdfstring{set\+\_\+data()}{set\_data()}}
+{\footnotesize\ttfamily template$<$typename Id\+Type , typename Data\+Type $>$ \\
+void \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$\+::set\+\_\+data (\begin{DoxyParamCaption}\item[{Data\+Type $\ast$}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Sets a pointer to a user owned object associated with the data 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Edge.\+h\item 
+Node.\+h\end{DoxyCompactItemize}

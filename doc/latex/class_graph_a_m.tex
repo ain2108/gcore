@@ -1,0 +1,65 @@
+\hypertarget{class_graph_a_m}{}\section{Graph\+AM$<$ Id\+Type, Weight\+Type, Data\+Type $>$ Class Template Reference}
+\label{class_graph_a_m}\index{Graph\+A\+M$<$ Id\+Type, Weight\+Type, Data\+Type $>$@{Graph\+A\+M$<$ Id\+Type, Weight\+Type, Data\+Type $>$}}
+
+
+{\ttfamily \#include $<$Graph\+A\+M.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a_m_ae865560a40d3675b3816fd4b228eaa9a}\label{class_graph_a_m_ae865560a40d3675b3816fd4b228eaa9a}} 
+using {\bfseries id\+\_\+type} = Id\+Type
+\item 
+\mbox{\Hypertarget{class_graph_a_m_a543fce2bc8d47cc3a4e2d4ae117199b8}\label{class_graph_a_m_a543fce2bc8d47cc3a4e2d4ae117199b8}} 
+using {\bfseries weight\+\_\+type} = Weight\+Type
+\item 
+\mbox{\Hypertarget{class_graph_a_m_acc608a9a10fb4d899dc0a5433b92f6c0}\label{class_graph_a_m_acc608a9a10fb4d899dc0a5433b92f6c0}} 
+using {\bfseries data\+\_\+type} = Data\+Type
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a_m_ad836760d4913946d23c094d71633a8cc}\label{class_graph_a_m_ad836760d4913946d23c094d71633a8cc}} 
+vector$<$ shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$ $>$ $>$ {\bfseries neighbours} (const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ src)
+\item 
+\mbox{\Hypertarget{class_graph_a_m_a0b73daf188e1160312d8f464148d4150}\label{class_graph_a_m_a0b73daf188e1160312d8f464148d4150}} 
+bool {\bfseries adjacent} (const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ src, const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ dst)
+\item 
+\mbox{\Hypertarget{class_graph_a_m_afaa990c8a8e89d26189a6b3434df9637}\label{class_graph_a_m_afaa990c8a8e89d26189a6b3434df9637}} 
+bool {\bfseries add\+\_\+node} (const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ x)
+\item 
+\mbox{\Hypertarget{class_graph_a_m_aa12d21d0772cfa22549791210d897cad}\label{class_graph_a_m_aa12d21d0772cfa22549791210d897cad}} 
+bool {\bfseries remove\+\_\+node} (const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ x)
+\item 
+\mbox{\Hypertarget{class_graph_a_m_a1f578a3b7253897950b93b30727e841b}\label{class_graph_a_m_a1f578a3b7253897950b93b30727e841b}} 
+bool {\bfseries add\+\_\+edge} (const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ src, const Weight\+Type w, const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ dst)
+\item 
+\mbox{\Hypertarget{class_graph_a_m_a6fec308f47cd83098f2fc526b2c8e9d0}\label{class_graph_a_m_a6fec308f47cd83098f2fc526b2c8e9d0}} 
+bool {\bfseries remove\+\_\+edge} (const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ src, const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ dst)
+\item 
+\mbox{\Hypertarget{class_graph_a_m_a17cd6866c903b8729024e18244b62000}\label{class_graph_a_m_a17cd6866c903b8729024e18244b62000}} 
+void {\bfseries print\+\_\+graph} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a_m_a7c1ee04a0c003ce686d0affdb7d848a8}\label{class_graph_a_m_a7c1ee04a0c003ce686d0affdb7d848a8}} 
+static shared\+\_\+ptr$<$ \hyperlink{class_graph_a_m}{Graph\+AM}$<$ Id\+Type, Weight\+Type, Data\+Type $>$ $>$ {\bfseries create\+\_\+graph} ()
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a_m_a76367132ae9d07dfd136a2e0fe948a39}\label{class_graph_a_m_a76367132ae9d07dfd136a2e0fe948a39}} 
+class {\bfseries Node\+A\+M$<$ Id\+Type, Weight\+Type, Data\+Type $>$}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Id\+Type, typename Weight\+Type, typename Data\+Type$>$\newline
+class Graph\+A\+M$<$ Id\+Type, Weight\+Type, Data\+Type $>$}
+
+This class provides the adjacency matrix implementation for a Graph. Use this implementation when the graph is expected to be dense. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Graph\+A\+M.\+h\end{DoxyCompactItemize}

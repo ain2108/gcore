@@ -5,6 +5,7 @@
 #include <algorithm>
 using namespace std;
 
+/*! \file */
 
 template <typename I, typename W, typename D>
 using EdgeSP = shared_ptr<Edge<I, W, D>>;
@@ -13,13 +14,15 @@ using NodeSP = shared_ptr<Node<I, D>>;
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
 using GraphSP = shared_ptr<GraphType<I, W, D>>;
 
+/*! Function combines two Edges of differnt weights into and edge with the average weight. This is an example
+of the combine function for make_undirected_from */
 template <typename I, typename W, typename D>
 inline EdgeSP<I, W, D> average_combine(EdgeSP<I, W, D> forward, EdgeSP<I, W, D> backward){
 	return create_edge<I, W, D>(forward->get_src(), (forward->get_weight() + backward->get_weight()) / 2, forward->get_dst());
 }
 
-/* Algorithm makes an undirected graph from a directed graph */
-/* combine - function that dictates how to combine opposite directed edges between two nodes */
+/*! Algorithm makes an undirected graph from a directed graph.
+combine - function that dictates how to combine opposite directed edges between two nodes */
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
 GraphSP<I, W, D, GraphType> make_undirected_from(GraphSP<I, W, D, GraphType> initial_graph,
 	std::function<EdgeSP<I, W, D>(EdgeSP<I, W, D>, EdgeSP<I, W, D>)> combine){

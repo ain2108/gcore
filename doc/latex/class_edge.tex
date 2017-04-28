@@ -1,0 +1,89 @@
+\hypertarget{class_edge}{}\section{Edge$<$ Id\+Type, Weight\+Type, Data\+Type $>$ Class Template Reference}
+\label{class_edge}\index{Edge$<$ Id\+Type, Weight\+Type, Data\+Type $>$@{Edge$<$ Id\+Type, Weight\+Type, Data\+Type $>$}}
+
+
+{\ttfamily \#include $<$Edge.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_edge_a9892b8e9478ee83a1fdf928b41bfb94d}\label{class_edge_a9892b8e9478ee83a1fdf928b41bfb94d}} 
+{\bfseries Edge} (\hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight\+Type, Data\+Type $>$ const \&)=delete
+\item 
+\mbox{\Hypertarget{class_edge_a68df5635b8c0f7deea2b8f770a9c8e24}\label{class_edge_a68df5635b8c0f7deea2b8f770a9c8e24}} 
+void {\bfseries operator=} (\hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight\+Type, Data\+Type $>$ const \&)=delete
+\item 
+const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$ $>$ \hyperlink{class_edge_a4deca3bdaa548c96f9677fbae2bd3f4f}{get\+\_\+src} () const
+\item 
+const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$ $>$ \hyperlink{class_edge_aeb09ab0156b04b4de3fc5cc100e39c82}{get\+\_\+dst} () const
+\item 
+Weight\+Type \hyperlink{class_edge_a9974565bdcddde77cf1935556170a485}{get\+\_\+weight} () const
+\item 
+Weight\+Type \hyperlink{class_edge_a71ab746404c0b7141b80f07e8e2e8837}{set\+\_\+weight} (Weight\+Type new\+\_\+w)
+\item 
+void \hyperlink{class_edge_acfcab535ffd0b064765fb2096633c246}{print\+\_\+edge} () const
+\item 
+\mbox{\Hypertarget{class_edge_ad96419484eb8163ced27d07c7ca11f9f}\label{class_edge_ad96419484eb8163ced27d07c7ca11f9f}} 
+{\bfseries Edge} (const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ src, Weight\+Type w, const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ dst)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static shared\+\_\+ptr$<$ \hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight\+Type, Data\+Type $>$ $>$ \hyperlink{class_edge_a6a3a07975dba67016f5ef615a88434f1}{create\+\_\+edge} (const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ src, const Weight\+Type w, const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ dst)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Id\+Type, typename Weight\+Type, typename Data\+Type$>$\newline
+class Edge$<$ Id\+Type, Weight\+Type, Data\+Type $>$}
+
+This class represents an \hyperlink{class_edge}{Edge} in the graph. And \hyperlink{class_edge}{Edge} has a src, a dst and a weight associated with it. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_edge_a6a3a07975dba67016f5ef615a88434f1}\label{class_edge_a6a3a07975dba67016f5ef615a88434f1}} 
+\index{Edge@{Edge}!create\+\_\+edge@{create\+\_\+edge}}
+\index{create\+\_\+edge@{create\+\_\+edge}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{create\+\_\+edge()}{create\_edge()}}
+{\footnotesize\ttfamily template$<$typename Id\+Type , typename Weight\+Type , typename Data\+Type $>$ \\
+static shared\+\_\+ptr$<$\hyperlink{class_edge}{Edge}$<$Id\+Type, Weight\+Type, Data\+Type$>$ $>$ \hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight\+Type, Data\+Type $>$\+::create\+\_\+edge (\begin{DoxyParamCaption}\item[{const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$}]{src,  }\item[{const Weight\+Type}]{w,  }\item[{const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+The function creates an \hyperlink{class_edge}{Edge} object, and returns a smart pointer to it. Function used by the user creation function \mbox{\Hypertarget{class_edge_aeb09ab0156b04b4de3fc5cc100e39c82}\label{class_edge_aeb09ab0156b04b4de3fc5cc100e39c82}} 
+\index{Edge@{Edge}!get\+\_\+dst@{get\+\_\+dst}}
+\index{get\+\_\+dst@{get\+\_\+dst}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{get\+\_\+dst()}{get\_dst()}}
+{\footnotesize\ttfamily template$<$typename Id\+Type , typename Weight\+Type , typename Data\+Type $>$ \\
+const shared\+\_\+ptr$<$\hyperlink{class_node}{Node}$<$Id\+Type, Data\+Type$>$ $>$ \hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight\+Type, Data\+Type $>$\+::get\+\_\+dst (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+The function returns the shared pinter to a destination node \mbox{\Hypertarget{class_edge_a4deca3bdaa548c96f9677fbae2bd3f4f}\label{class_edge_a4deca3bdaa548c96f9677fbae2bd3f4f}} 
+\index{Edge@{Edge}!get\+\_\+src@{get\+\_\+src}}
+\index{get\+\_\+src@{get\+\_\+src}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{get\+\_\+src()}{get\_src()}}
+{\footnotesize\ttfamily template$<$typename Id\+Type , typename Weight\+Type , typename Data\+Type $>$ \\
+const shared\+\_\+ptr$<$\hyperlink{class_node}{Node}$<$Id\+Type, Data\+Type$>$ $>$ \hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight\+Type, Data\+Type $>$\+::get\+\_\+src (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+The function returns the shared pinter to a source node \mbox{\Hypertarget{class_edge_a9974565bdcddde77cf1935556170a485}\label{class_edge_a9974565bdcddde77cf1935556170a485}} 
+\index{Edge@{Edge}!get\+\_\+weight@{get\+\_\+weight}}
+\index{get\+\_\+weight@{get\+\_\+weight}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{get\+\_\+weight()}{get\_weight()}}
+{\footnotesize\ttfamily template$<$typename Id\+Type , typename Weight\+Type , typename Data\+Type $>$ \\
+Weight\+Type \hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight\+Type, Data\+Type $>$\+::get\+\_\+weight (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+The function returns the weight of the \hyperlink{class_edge}{Edge} by value \mbox{\Hypertarget{class_edge_acfcab535ffd0b064765fb2096633c246}\label{class_edge_acfcab535ffd0b064765fb2096633c246}} 
+\index{Edge@{Edge}!print\+\_\+edge@{print\+\_\+edge}}
+\index{print\+\_\+edge@{print\+\_\+edge}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{print\+\_\+edge()}{print\_edge()}}
+{\footnotesize\ttfamily template$<$typename Id\+Type , typename Weight\+Type , typename Data\+Type $>$ \\
+void \hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight\+Type, Data\+Type $>$\+::print\+\_\+edge (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+This is a simple printed provided only for debugging purposes \mbox{\Hypertarget{class_edge_a71ab746404c0b7141b80f07e8e2e8837}\label{class_edge_a71ab746404c0b7141b80f07e8e2e8837}} 
+\index{Edge@{Edge}!set\+\_\+weight@{set\+\_\+weight}}
+\index{set\+\_\+weight@{set\+\_\+weight}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{set\+\_\+weight()}{set\_weight()}}
+{\footnotesize\ttfamily template$<$typename Id\+Type , typename Weight\+Type , typename Data\+Type $>$ \\
+Weight\+Type \hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight\+Type, Data\+Type $>$\+::set\+\_\+weight (\begin{DoxyParamCaption}\item[{Weight\+Type}]{new\+\_\+w }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+The function sets the weight of the \hyperlink{class_edge}{Edge} by value 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Edge.\+h\end{DoxyCompactItemize}

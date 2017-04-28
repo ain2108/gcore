@@ -1,0 +1,65 @@
+\hypertarget{class_square_matrix}{}\section{Square\+Matrix$<$ Entry\+Type $>$ Class Template Reference}
+\label{class_square_matrix}\index{Square\+Matrix$<$ Entry\+Type $>$@{Square\+Matrix$<$ Entry\+Type $>$}}
+
+
+{\ttfamily \#include $<$Square\+Matrix.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_square_matrix_af447f09f06d4b03e5874cb1cb9ef5972}\label{class_square_matrix_af447f09f06d4b03e5874cb1cb9ef5972}} 
+void {\bfseries resize} ()
+\item 
+\mbox{\Hypertarget{class_square_matrix_ab91388c1395bac074c957721c87c95f6}\label{class_square_matrix_ab91388c1395bac074c957721c87c95f6}} 
+Entry\+Type {\bfseries get\+\_\+entry} (int row\+\_\+index, int column\+\_\+index)
+\item 
+\mbox{\Hypertarget{class_square_matrix_a185eba000b27312c9448e06fd1bbc1f1}\label{class_square_matrix_a185eba000b27312c9448e06fd1bbc1f1}} 
+void {\bfseries set\+\_\+entry} (int row\+\_\+index, int column\+\_\+index, Entry\+Type value)
+\item 
+\mbox{\Hypertarget{class_square_matrix_a0aa3d158824b73addf28ef78a335a346}\label{class_square_matrix_a0aa3d158824b73addf28ef78a335a346}} 
+void {\bfseries zero\+\_\+entry} (int row\+\_\+index, int column\+\_\+index)
+\item 
+\mbox{\Hypertarget{class_square_matrix_a9d993cf6ba070564a5ff86488a6b85f4}\label{class_square_matrix_a9d993cf6ba070564a5ff86488a6b85f4}} 
+bool {\bfseries is\+\_\+zero\+\_\+entry} (int row\+\_\+index, int column\+\_\+index)
+\item 
+\mbox{\Hypertarget{class_square_matrix_a86345d02c6829b44b4fc9174df69b1ca}\label{class_square_matrix_a86345d02c6829b44b4fc9174df69b1ca}} 
+std\+::vector$<$ int $>$ {\bfseries non\+\_\+zero\+\_\+entries} (int row\+\_\+index)
+\item 
+\mbox{\Hypertarget{class_square_matrix_a0724c92d25be6bfde5d893e3330f33b4}\label{class_square_matrix_a0724c92d25be6bfde5d893e3330f33b4}} 
+void {\bfseries zero\+\_\+row} (int row\+\_\+index)
+\item 
+\mbox{\Hypertarget{class_square_matrix_a49358eaf89751c1de75ed9c7fc16ccff}\label{class_square_matrix_a49358eaf89751c1de75ed9c7fc16ccff}} 
+void {\bfseries zero\+\_\+column} (int column\+\_\+index)
+\item 
+\mbox{\Hypertarget{class_square_matrix_a14035081f651fa9b2e204aa9568e8c77}\label{class_square_matrix_a14035081f651fa9b2e204aa9568e8c77}} 
+void {\bfseries inc\+\_\+used} ()
+\item 
+\mbox{\Hypertarget{class_square_matrix_ad9c3695c1378269f22a906024e5f2e99}\label{class_square_matrix_ad9c3695c1378269f22a906024e5f2e99}} 
+bool {\bfseries full} ()
+\item 
+\mbox{\Hypertarget{class_square_matrix_aedf48cb53df57a4bd4384a24ac0509ed}\label{class_square_matrix_aedf48cb53df57a4bd4384a24ac0509ed}} 
+void {\bfseries print\+\_\+matrix} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_square_matrix_a0f49d22baefcfdcb66eb0a2334704a4f}\label{class_square_matrix_a0f49d22baefcfdcb66eb0a2334704a4f}} 
+Entry\+Type $\ast$ {\bfseries entry}
+\item 
+\mbox{\Hypertarget{class_square_matrix_a8aea772fcf02f5d7304c4fe752c8c83c}\label{class_square_matrix_a8aea772fcf02f5d7304c4fe752c8c83c}} 
+int {\bfseries used}
+\item 
+\mbox{\Hypertarget{class_square_matrix_ad1a8e83c36682a8e9c75a3172459a4c5}\label{class_square_matrix_ad1a8e83c36682a8e9c75a3172459a4c5}} 
+int {\bfseries alloced}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Entry\+Type$>$\newline
+class Square\+Matrix$<$ Entry\+Type $>$}
+
+This is a supporting class for adjacency matrix implementation. It provides a simple square matrix interface, which is exactly what is needed in \hyperlink{class_graph_a_m}{Graph\+AM}. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Square\+Matrix.\+h\end{DoxyCompactItemize}

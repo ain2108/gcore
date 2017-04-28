@@ -1,0 +1,86 @@
+\hypertarget{class_graph_a_l}{}\section{Graph\+AL$<$ Id\+Type, Weight\+Type, Data\+Type $>$ Class Template Reference}
+\label{class_graph_a_l}\index{Graph\+A\+L$<$ Id\+Type, Weight\+Type, Data\+Type $>$@{Graph\+A\+L$<$ Id\+Type, Weight\+Type, Data\+Type $>$}}
+
+
+{\ttfamily \#include $<$Graph\+A\+L.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a_l_a270538bd4b1f3cec908bf6ede7bfcdd4}\label{class_graph_a_l_a270538bd4b1f3cec908bf6ede7bfcdd4}} 
+using {\bfseries id\+\_\+type} = Id\+Type
+\item 
+\mbox{\Hypertarget{class_graph_a_l_a160a0a06c87cd9585316317510d40a43}\label{class_graph_a_l_a160a0a06c87cd9585316317510d40a43}} 
+using {\bfseries weight\+\_\+type} = Weight\+Type
+\item 
+\mbox{\Hypertarget{class_graph_a_l_ab9bb840393b9d4bc9c3fb7a4bd49f96c}\label{class_graph_a_l_ab9bb840393b9d4bc9c3fb7a4bd49f96c}} 
+using {\bfseries data\+\_\+type} = Data\+Type
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a_l_a353837400673848253837aac9f8e371f}\label{class_graph_a_l_a353837400673848253837aac9f8e371f}} 
+bool {\bfseries has\+\_\+node} (const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ x)
+\item 
+\mbox{\Hypertarget{class_graph_a_l_a656576f66ccc01e7e304d1185c964613}\label{class_graph_a_l_a656576f66ccc01e7e304d1185c964613}} 
+bool {\bfseries has\+\_\+edge} (const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ src, const Weight\+Type w, const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ dst)
+\item 
+\mbox{\Hypertarget{class_graph_a_l_a545256531ab0dd576f15e8ca1d948ad2}\label{class_graph_a_l_a545256531ab0dd576f15e8ca1d948ad2}} 
+vector$<$ shared\+\_\+ptr$<$ \hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight\+Type, Data\+Type $>$ $>$ $>$ {\bfseries edges\+\_\+of\+\_\+node} (const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ x)
+\item 
+\mbox{\Hypertarget{class_graph_a_l_a8057925080207f6b03eed78cd6fe89c1}\label{class_graph_a_l_a8057925080207f6b03eed78cd6fe89c1}} 
+vector$<$ shared\+\_\+ptr$<$ \hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight\+Type, Data\+Type $>$ $>$ $>$ {\bfseries get\+\_\+edges} ()
+\item 
+\mbox{\Hypertarget{class_graph_a_l_a3738095ca2494093fc3d324d2157a13c}\label{class_graph_a_l_a3738095ca2494093fc3d324d2157a13c}} 
+shared\+\_\+ptr$<$ \hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight\+Type, Data\+Type $>$ $>$ {\bfseries get\+\_\+edge} (shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ src, shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ dst)
+\item 
+\mbox{\Hypertarget{class_graph_a_l_a1e621de0746bc97a1f8201cdd7bc867b}\label{class_graph_a_l_a1e621de0746bc97a1f8201cdd7bc867b}} 
+vector$<$ shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$ $>$ $>$ {\bfseries get\+\_\+nodes} ()
+\item 
+\mbox{\Hypertarget{class_graph_a_l_ad819448fde92f796dcdd8c6866362453}\label{class_graph_a_l_ad819448fde92f796dcdd8c6866362453}} 
+vector$<$ shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$ $>$ $>$ {\bfseries neighbours} (const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ src)
+\item 
+\mbox{\Hypertarget{class_graph_a_l_a4f665010fabc9093a51366c65b576ee7}\label{class_graph_a_l_a4f665010fabc9093a51366c65b576ee7}} 
+bool {\bfseries adjacent} (const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ src, const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ dst)
+\item 
+\mbox{\Hypertarget{class_graph_a_l_a6a8d8265bb9bbb8d0a819615dc0abd53}\label{class_graph_a_l_a6a8d8265bb9bbb8d0a819615dc0abd53}} 
+bool {\bfseries add\+\_\+node} (const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ x)
+\item 
+\mbox{\Hypertarget{class_graph_a_l_a4f691e44173f90b5ed6d915e60c11408}\label{class_graph_a_l_a4f691e44173f90b5ed6d915e60c11408}} 
+bool {\bfseries remove\+\_\+node} (const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ x)
+\item 
+\mbox{\Hypertarget{class_graph_a_l_a85bdfd1733b0ca20f770652db632218e}\label{class_graph_a_l_a85bdfd1733b0ca20f770652db632218e}} 
+bool {\bfseries add\+\_\+edge} (shared\+\_\+ptr$<$ \hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight\+Type, Data\+Type $>$$>$ e)
+\item 
+\mbox{\Hypertarget{class_graph_a_l_ae2dddb7b2a0317a8889568166bdc6993}\label{class_graph_a_l_ae2dddb7b2a0317a8889568166bdc6993}} 
+bool {\bfseries add\+\_\+edge} (const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ src, const Weight\+Type w, const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ dst)
+\item 
+\mbox{\Hypertarget{class_graph_a_l_a9266a40f808391b712f4e6f36f65dfcf}\label{class_graph_a_l_a9266a40f808391b712f4e6f36f65dfcf}} 
+bool {\bfseries remove\+\_\+edge} (const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ src, const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ dst)
+\item 
+\mbox{\Hypertarget{class_graph_a_l_ab92a504da660672ae4278db10d2c7a84}\label{class_graph_a_l_ab92a504da660672ae4278db10d2c7a84}} 
+void {\bfseries print\+\_\+graph} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a_l_a5f97f158b843029b5d29b182578b383d}\label{class_graph_a_l_a5f97f158b843029b5d29b182578b383d}} 
+static shared\+\_\+ptr$<$ \hyperlink{class_graph_a_l}{Graph\+AL}$<$ Id\+Type, Weight\+Type, Data\+Type $>$ $>$ {\bfseries create\+\_\+graph} ()
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph_a_l_aaf57e680e124479357b702bd8d974494}\label{class_graph_a_l_aaf57e680e124479357b702bd8d974494}} 
+class {\bfseries Node\+A\+L$<$ Id\+Type, Weight\+Type, Data\+Type $>$}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Id\+Type, typename Weight\+Type, typename Data\+Type$>$\newline
+class Graph\+A\+L$<$ Id\+Type, Weight\+Type, Data\+Type $>$}
+
+This class provides the adjacency list implementation of a Graph. Use this implementation when the number of Edges is expected to be proportional to the number of vertices. In other words, for sparse graphs. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Graph\+A\+L.\+h\end{DoxyCompactItemize}

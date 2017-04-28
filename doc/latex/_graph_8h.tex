@@ -1,0 +1,267 @@
+\hypertarget{_graph_8h}{}\section{Graph.\+h File Reference}
+\label{_graph_8h}\index{Graph.\+h@{Graph.\+h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include \char`\"{}Graph.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}graph\+\_\+concepts.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Edge.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Node.\+h\char`\"{}}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_node}{Node$<$ Id\+Type, Data\+Type $>$}
+\item 
+class \hyperlink{class_edge}{Edge$<$ Id\+Type, Weight\+Type, Data\+Type $>$}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_graph_8h_a1303e8be32ee2be0e2ee4f9d41d2475d}\label{_graph_8h_a1303e8be32ee2be0e2ee4f9d41d2475d}} 
+{\footnotesize template$<$typename I , typename W , typename D $>$ }\\using {\bfseries Edge\+SP} = shared\+\_\+ptr$<$ \hyperlink{class_edge}{Edge}$<$ I, W, D $>$ $>$
+\item 
+\mbox{\Hypertarget{_graph_8h_a8fe8040fda5a95749233c20f18c63434}\label{_graph_8h_a8fe8040fda5a95749233c20f18c63434}} 
+{\footnotesize template$<$typename I , typename D $>$ }\\using {\bfseries Node\+SP} = shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ I, D $>$ $>$
+\item 
+\mbox{\Hypertarget{_graph_8h_a9d12c018b8556c966296fd96aa3550d6}\label{_graph_8h_a9d12c018b8556c966296fd96aa3550d6}} 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\using {\bfseries Graph\+SP} = shared\+\_\+ptr$<$ Graph\+Type$<$ I, W, D $>$ $>$
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Id\+Type , typename Data\+Type $>$ }\\shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$ $>$ \hyperlink{_graph_8h_a2be70d5481d3e5165cc6bb23bebd7fdc}{create\+\_\+node} (Id\+Type id, Data\+Type $\ast$data)
+\item 
+{\footnotesize template$<$typename Id\+Type , typename Weight\+Type , typename Data\+Type $>$ }\\shared\+\_\+ptr$<$ \hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight\+Type, Data\+Type $>$ $>$ \hyperlink{_graph_8h_a3ccc7319f2d7fc54ce5305c8b90251a5}{create\+\_\+edge} (const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ src, const Weight\+Type w, const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$ dst)
+\item 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\shared\+\_\+ptr$<$ Graph\+Type$<$ I, W, D $>$ $>$ \hyperlink{_graph_8h_ae4d4062b14bdd0b3172aa6e34d6beac6}{create\+\_\+graph} ()
+\item 
+{\footnotesize template$<$typename Id\+Type , typename Weight , typename Data\+Type $>$ }\\bool \hyperlink{_graph_8h_a1c56f878e8ace9afbd7d1ffa5e143276}{compare\+\_\+edges} (const shared\+\_\+ptr$<$ \hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight, Data\+Type $>$$>$ lhs, const shared\+\_\+ptr$<$ \hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight, Data\+Type $>$$>$ rhs)
+\item 
+{\footnotesize template$<$typename Id\+Type , typename Data\+Type $>$ }\\void \hyperlink{_graph_8h_aa79458c819d73746aa76e4a3456c277d}{print\+\_\+nodes} (vector$<$ shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$$>$ \&node\+\_\+ps)
+\item 
+{\footnotesize template$<$typename Id\+Type , typename Weight\+Type , typename Data\+Type $>$ }\\void \hyperlink{_graph_8h_a5377bb03d49916497218904cc56640b0}{print\+\_\+edges} (vector$<$ shared\+\_\+ptr$<$ \hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight\+Type, Data\+Type $>$$>$$>$ \&edges)
+\item 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\void \hyperlink{_graph_8h_ad44af169ccdce19e9604ae81cad62018}{add\+\_\+nodes} (shared\+\_\+ptr$<$ Graph\+Type$<$ I, W, D $>$$>$ g, const vector$<$ shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ I, D $>$$>$$>$ \&node\+\_\+ps)
+\item 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\void \hyperlink{_graph_8h_a3e41b53fa901b39a4ed844b40d861cee}{add\+\_\+edges} (shared\+\_\+ptr$<$ Graph\+Type$<$ I, W, D $>$$>$ g, const vector$<$ shared\+\_\+ptr$<$ \hyperlink{class_edge}{Edge}$<$ I, W, D $>$$>$$>$ \&edge\+\_\+ps)
+\item 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\bool \hyperlink{_graph_8h_ae1ab4ba713327bb70f7bcdf3e48a49b3}{has\+\_\+node} (const Graph\+SP$<$ I, W, D, Graph\+Type $>$ graph, const Node\+SP$<$ I, D $>$ x)
+\item 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\bool \hyperlink{_graph_8h_a226068328dab8da8bee426d6e9ac50b9}{has\+\_\+edge} (const Graph\+SP$<$ I, W, D, Graph\+Type $>$ graph, Edge\+SP$<$ I, W, D $>$ e)
+\item 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\bool \hyperlink{_graph_8h_a608e836c34ed93e435a82b4ff9b9cb01}{has\+\_\+edge} (const Graph\+SP$<$ I, W, D, Graph\+Type $>$ graph, const Node\+SP$<$ I, D $>$ src, const W w, const Node\+SP$<$ I, D $>$ dst)
+\item 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\vector$<$ Edge\+SP$<$ I, W, D $>$ $>$ \hyperlink{_graph_8h_a272e11f5b5a3e71c4724e86c8ad0842a}{edges\+\_\+of\+\_\+node} (const Graph\+SP$<$ I, W, D, Graph\+Type $>$ graph, const Node\+SP$<$ I, D $>$ x)
+\item 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\vector$<$ Edge\+SP$<$ I, W, D $>$ $>$ \hyperlink{_graph_8h_a38afac44f6e38ae183e357370e8004d2}{get\+\_\+edges} (const Graph\+SP$<$ I, W, D, Graph\+Type $>$ graph)
+\item 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\Edge\+SP$<$ I, W, D $>$ \hyperlink{_graph_8h_a50cab2255994adecf08df9f201f853bb}{get\+\_\+edge} (const Graph\+SP$<$ I, W, D, Graph\+Type $>$ graph, Node\+SP$<$ I, D $>$ src, Node\+SP$<$ I, D $>$ dst)
+\item 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\vector$<$ Node\+SP$<$ I, D $>$ $>$ \hyperlink{_graph_8h_af51ccf02194908e132feec03975abe99}{get\+\_\+nodes} (const Graph\+SP$<$ I, W, D, Graph\+Type $>$ graph)
+\item 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\vector$<$ Node\+SP$<$ I, D $>$ $>$ \hyperlink{_graph_8h_ae97c3cc1148ab3f37adf6d3c924c51de}{neighbours} (const Graph\+SP$<$ I, W, D, Graph\+Type $>$ graph, const Node\+SP$<$ I, D $>$ src)
+\item 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\bool \hyperlink{_graph_8h_a5c4520c88e7280c0da1037909674cae0}{adjacent} (const Graph\+SP$<$ I, W, D, Graph\+Type $>$ graph, const Node\+SP$<$ I, D $>$ src, const Node\+SP$<$ I, D $>$ dst)
+\item 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\bool \hyperlink{_graph_8h_a74b54dbfa94dfefc01d62b701ab79a48}{add\+\_\+node} (const Graph\+SP$<$ I, W, D, Graph\+Type $>$ graph, const Node\+SP$<$ I, D $>$ x)
+\item 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\bool \hyperlink{_graph_8h_a33646d862b17257a284aa7011a35a25c}{remove\+\_\+node} (const Graph\+SP$<$ I, W, D, Graph\+Type $>$ graph, const Node\+SP$<$ I, D $>$ x)
+\item 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\bool \hyperlink{_graph_8h_a4356da7bec434b14cb2f6c4aad13e9d7}{add\+\_\+edge} (const Graph\+SP$<$ I, W, D, Graph\+Type $>$ graph, const Node\+SP$<$ I, D $>$ src, const W w, const Node\+SP$<$ I, D $>$ dst)
+\item 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\bool \hyperlink{_graph_8h_a43fec3a1602d970f13e8ce870a055fdb}{add\+\_\+edge} (const Graph\+SP$<$ I, W, D, Graph\+Type $>$ graph, const Edge\+SP$<$ I, W, D $>$ e)
+\item 
+{\footnotesize template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ }\\bool \hyperlink{_graph_8h_acbd7e49db3f5da6cc4b88ca9f9ae3bda}{remove\+\_\+edge} (const Graph\+SP$<$ I, W, D, Graph\+Type $>$ graph, const Node\+SP$<$ I, D $>$ src, const Node\+SP$<$ I, D $>$ dst)
+\item 
+{\footnotesize template$<$typename I , typename D $>$ }\\bool \hyperlink{_graph_8h_ae18cd7b9a5980c9c0ab0493158c35003}{operator==} (const Node\+SP$<$ I, D $>$ \&lhs, const Node\+SP$<$ I, D $>$ \&rhs)
+\item 
+{\footnotesize template$<$typename I , typename D $>$ }\\bool \hyperlink{_graph_8h_a3617368d7e1fb941e8e2acafea1abfda}{operator!=} (const Node\+SP$<$ I, D $>$ \&lhs, const Node\+SP$<$ I, D $>$ \&rhs)
+\item 
+{\footnotesize template$<$typename I , typename W , typename D $>$ }\\bool \hyperlink{_graph_8h_a2fe1888ae31f5115fd1fcfd2cf54d8d1}{operator==} (const Edge\+SP$<$ I, W, D $>$ lhs, const Edge\+SP$<$ I, W, D $>$ rhs)
+\item 
+{\footnotesize template$<$typename I , typename W , typename D $>$ }\\bool \hyperlink{_graph_8h_ae8c549a4f5dcacc39b51e79f4baad408}{operator!=} (const Edge\+SP$<$ I, W, D $>$ lhs, const Edge\+SP$<$ I, W, D $>$ rhs)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_graph_8h_a4356da7bec434b14cb2f6c4aad13e9d7}\label{_graph_8h_a4356da7bec434b14cb2f6c4aad13e9d7}} 
+\index{Graph.\+h@{Graph.\+h}!add\+\_\+edge@{add\+\_\+edge}}
+\index{add\+\_\+edge@{add\+\_\+edge}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{add\+\_\+edge()}{add\_edge()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ \\
+bool add\+\_\+edge (\begin{DoxyParamCaption}\item[{const Graph\+SP$<$ I, W, D, Graph\+Type $>$}]{graph,  }\item[{const Node\+SP$<$ I, D $>$}]{src,  }\item[{const W}]{w,  }\item[{const Node\+SP$<$ I, D $>$}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Implementation independent function adds an \hyperlink{class_edge}{Edge} to the graph. Exception if either src or dst are not part of the graph, or if they are already adjacent \mbox{\Hypertarget{_graph_8h_a43fec3a1602d970f13e8ce870a055fdb}\label{_graph_8h_a43fec3a1602d970f13e8ce870a055fdb}} 
+\index{Graph.\+h@{Graph.\+h}!add\+\_\+edge@{add\+\_\+edge}}
+\index{add\+\_\+edge@{add\+\_\+edge}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{add\+\_\+edge()}{add\_edge()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ \\
+bool add\+\_\+edge (\begin{DoxyParamCaption}\item[{const Graph\+SP$<$ I, W, D, Graph\+Type $>$}]{graph,  }\item[{const Edge\+SP$<$ I, W, D $>$}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Implementation independent function adds an \hyperlink{class_edge}{Edge} to the graph. Exception if either src or dst are not part of the graph, or if they are already adjacent \mbox{\Hypertarget{_graph_8h_a3e41b53fa901b39a4ed844b40d861cee}\label{_graph_8h_a3e41b53fa901b39a4ed844b40d861cee}} 
+\index{Graph.\+h@{Graph.\+h}!add\+\_\+edges@{add\+\_\+edges}}
+\index{add\+\_\+edges@{add\+\_\+edges}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{add\+\_\+edges()}{add\_edges()}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ \\
+void add\+\_\+edges (\begin{DoxyParamCaption}\item[{shared\+\_\+ptr$<$ Graph\+Type$<$ I, W, D $>$$>$}]{g,  }\item[{const vector$<$ shared\+\_\+ptr$<$ \hyperlink{class_edge}{Edge}$<$ I, W, D $>$$>$$>$ \&}]{edge\+\_\+ps }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Utility function that adds all Edges in the input vector to the given graph \mbox{\Hypertarget{_graph_8h_a74b54dbfa94dfefc01d62b701ab79a48}\label{_graph_8h_a74b54dbfa94dfefc01d62b701ab79a48}} 
+\index{Graph.\+h@{Graph.\+h}!add\+\_\+node@{add\+\_\+node}}
+\index{add\+\_\+node@{add\+\_\+node}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{add\+\_\+node()}{add\_node()}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ \\
+bool add\+\_\+node (\begin{DoxyParamCaption}\item[{const Graph\+SP$<$ I, W, D, Graph\+Type $>$}]{graph,  }\item[{const Node\+SP$<$ I, D $>$}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Implementation independent function adds a \hyperlink{class_node}{Node} to the graph. Exception if \hyperlink{class_node}{Node} already added. \mbox{\Hypertarget{_graph_8h_ad44af169ccdce19e9604ae81cad62018}\label{_graph_8h_ad44af169ccdce19e9604ae81cad62018}} 
+\index{Graph.\+h@{Graph.\+h}!add\+\_\+nodes@{add\+\_\+nodes}}
+\index{add\+\_\+nodes@{add\+\_\+nodes}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{add\+\_\+nodes()}{add\_nodes()}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ \\
+void add\+\_\+nodes (\begin{DoxyParamCaption}\item[{shared\+\_\+ptr$<$ Graph\+Type$<$ I, W, D $>$$>$}]{g,  }\item[{const vector$<$ shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ I, D $>$$>$$>$ \&}]{node\+\_\+ps }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Utility function that adds all Nodes in the input vector to the given graph \mbox{\Hypertarget{_graph_8h_a5c4520c88e7280c0da1037909674cae0}\label{_graph_8h_a5c4520c88e7280c0da1037909674cae0}} 
+\index{Graph.\+h@{Graph.\+h}!adjacent@{adjacent}}
+\index{adjacent@{adjacent}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{adjacent()}{adjacent()}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ \\
+bool adjacent (\begin{DoxyParamCaption}\item[{const Graph\+SP$<$ I, W, D, Graph\+Type $>$}]{graph,  }\item[{const Node\+SP$<$ I, D $>$}]{src,  }\item[{const Node\+SP$<$ I, D $>$}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Implementation independent function returns boolean value reflecting the adjacency of src and dst in graph \mbox{\Hypertarget{_graph_8h_a1c56f878e8ace9afbd7d1ffa5e143276}\label{_graph_8h_a1c56f878e8ace9afbd7d1ffa5e143276}} 
+\index{Graph.\+h@{Graph.\+h}!compare\+\_\+edges@{compare\+\_\+edges}}
+\index{compare\+\_\+edges@{compare\+\_\+edges}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{compare\+\_\+edges()}{compare\_edges()}}
+{\footnotesize\ttfamily template$<$typename Id\+Type , typename Weight , typename Data\+Type $>$ \\
+bool compare\+\_\+edges (\begin{DoxyParamCaption}\item[{const shared\+\_\+ptr$<$ \hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight, Data\+Type $>$$>$}]{lhs,  }\item[{const shared\+\_\+ptr$<$ \hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight, Data\+Type $>$$>$}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function compares two edges by the ($<$) if the Weight \mbox{\Hypertarget{_graph_8h_a3ccc7319f2d7fc54ce5305c8b90251a5}\label{_graph_8h_a3ccc7319f2d7fc54ce5305c8b90251a5}} 
+\index{Graph.\+h@{Graph.\+h}!create\+\_\+edge@{create\+\_\+edge}}
+\index{create\+\_\+edge@{create\+\_\+edge}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{create\+\_\+edge()}{create\_edge()}}
+{\footnotesize\ttfamily template$<$typename Id\+Type , typename Weight\+Type , typename Data\+Type $>$ \\
+shared\+\_\+ptr$<$\hyperlink{class_edge}{Edge}$<$Id\+Type, Weight\+Type, Data\+Type$>$ $>$ create\+\_\+edge (\begin{DoxyParamCaption}\item[{const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$}]{src,  }\item[{const Weight\+Type}]{w,  }\item[{const shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function creates an instance of a \hyperlink{class_edge}{Edge}. Returns a shared\+\_\+ptr back to the user. User should use auto keyword to catch this pointer \mbox{\Hypertarget{_graph_8h_ae4d4062b14bdd0b3172aa6e34d6beac6}\label{_graph_8h_ae4d4062b14bdd0b3172aa6e34d6beac6}} 
+\index{Graph.\+h@{Graph.\+h}!create\+\_\+graph@{create\+\_\+graph}}
+\index{create\+\_\+graph@{create\+\_\+graph}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{create\+\_\+graph()}{create\_graph()}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ \\
+shared\+\_\+ptr$<$Graph\+Type$<$I, W, D$>$ $>$ create\+\_\+graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function creates an instance of a Graph. Returns a shared\+\_\+ptr back to the user. User should use auto keyword to catch this pointer \mbox{\Hypertarget{_graph_8h_a2be70d5481d3e5165cc6bb23bebd7fdc}\label{_graph_8h_a2be70d5481d3e5165cc6bb23bebd7fdc}} 
+\index{Graph.\+h@{Graph.\+h}!create\+\_\+node@{create\+\_\+node}}
+\index{create\+\_\+node@{create\+\_\+node}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{create\+\_\+node()}{create\_node()}}
+{\footnotesize\ttfamily template$<$typename Id\+Type , typename Data\+Type $>$ \\
+shared\+\_\+ptr$<$\hyperlink{class_node}{Node}$<$Id\+Type, Data\+Type$>$ $>$ create\+\_\+node (\begin{DoxyParamCaption}\item[{Id\+Type}]{id,  }\item[{Data\+Type $\ast$}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function creates an instance of a \hyperlink{class_node}{Node}. Returns a shared\+\_\+ptr back to the user. User should use auto keyword to catch this pointer \mbox{\Hypertarget{_graph_8h_a272e11f5b5a3e71c4724e86c8ad0842a}\label{_graph_8h_a272e11f5b5a3e71c4724e86c8ad0842a}} 
+\index{Graph.\+h@{Graph.\+h}!edges\+\_\+of\+\_\+node@{edges\+\_\+of\+\_\+node}}
+\index{edges\+\_\+of\+\_\+node@{edges\+\_\+of\+\_\+node}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{edges\+\_\+of\+\_\+node()}{edges\_of\_node()}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ \\
+vector$<$Edge\+SP$<$I, W, D$>$ $>$ edges\+\_\+of\+\_\+node (\begin{DoxyParamCaption}\item[{const Graph\+SP$<$ I, W, D, Graph\+Type $>$}]{graph,  }\item[{const Node\+SP$<$ I, D $>$}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Implementation independent function returns a vector of Edges of \hyperlink{class_node}{Node} x in graph. \mbox{\Hypertarget{_graph_8h_a50cab2255994adecf08df9f201f853bb}\label{_graph_8h_a50cab2255994adecf08df9f201f853bb}} 
+\index{Graph.\+h@{Graph.\+h}!get\+\_\+edge@{get\+\_\+edge}}
+\index{get\+\_\+edge@{get\+\_\+edge}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{get\+\_\+edge()}{get\_edge()}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ \\
+Edge\+SP$<$I, W, D$>$ get\+\_\+edge (\begin{DoxyParamCaption}\item[{const Graph\+SP$<$ I, W, D, Graph\+Type $>$}]{graph,  }\item[{Node\+SP$<$ I, D $>$}]{src,  }\item[{Node\+SP$<$ I, D $>$}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Implementation independent function returns the \hyperlink{class_edge}{Edge} object that representing the \hyperlink{class_edge}{Edge} between src and dst in graph \mbox{\Hypertarget{_graph_8h_a38afac44f6e38ae183e357370e8004d2}\label{_graph_8h_a38afac44f6e38ae183e357370e8004d2}} 
+\index{Graph.\+h@{Graph.\+h}!get\+\_\+edges@{get\+\_\+edges}}
+\index{get\+\_\+edges@{get\+\_\+edges}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{get\+\_\+edges()}{get\_edges()}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ \\
+vector$<$Edge\+SP$<$I, W, D$>$ $>$ get\+\_\+edges (\begin{DoxyParamCaption}\item[{const Graph\+SP$<$ I, W, D, Graph\+Type $>$}]{graph }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Implementation independent function returns a vector of all Edges in graph. \mbox{\Hypertarget{_graph_8h_af51ccf02194908e132feec03975abe99}\label{_graph_8h_af51ccf02194908e132feec03975abe99}} 
+\index{Graph.\+h@{Graph.\+h}!get\+\_\+nodes@{get\+\_\+nodes}}
+\index{get\+\_\+nodes@{get\+\_\+nodes}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{get\+\_\+nodes()}{get\_nodes()}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ \\
+vector$<$Node\+SP$<$I, D$>$ $>$ get\+\_\+nodes (\begin{DoxyParamCaption}\item[{const Graph\+SP$<$ I, W, D, Graph\+Type $>$}]{graph }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Implementation independent function returns a vector of all Nodes in graph. \mbox{\Hypertarget{_graph_8h_a226068328dab8da8bee426d6e9ac50b9}\label{_graph_8h_a226068328dab8da8bee426d6e9ac50b9}} 
+\index{Graph.\+h@{Graph.\+h}!has\+\_\+edge@{has\+\_\+edge}}
+\index{has\+\_\+edge@{has\+\_\+edge}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{has\+\_\+edge()}{has\_edge()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ \\
+bool has\+\_\+edge (\begin{DoxyParamCaption}\item[{const Graph\+SP$<$ I, W, D, Graph\+Type $>$}]{graph,  }\item[{Edge\+SP$<$ I, W, D $>$}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Implementation independent function checks if the \hyperlink{class_edge}{Edge} e is a member of the Graph graph. \mbox{\Hypertarget{_graph_8h_a608e836c34ed93e435a82b4ff9b9cb01}\label{_graph_8h_a608e836c34ed93e435a82b4ff9b9cb01}} 
+\index{Graph.\+h@{Graph.\+h}!has\+\_\+edge@{has\+\_\+edge}}
+\index{has\+\_\+edge@{has\+\_\+edge}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{has\+\_\+edge()}{has\_edge()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ \\
+bool has\+\_\+edge (\begin{DoxyParamCaption}\item[{const Graph\+SP$<$ I, W, D, Graph\+Type $>$}]{graph,  }\item[{const Node\+SP$<$ I, D $>$}]{src,  }\item[{const W}]{w,  }\item[{const Node\+SP$<$ I, D $>$}]{dst }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Implementation independent function checks if the \hyperlink{class_edge}{Edge} e is a member of the Graph graph. \mbox{\Hypertarget{_graph_8h_ae1ab4ba713327bb70f7bcdf3e48a49b3}\label{_graph_8h_ae1ab4ba713327bb70f7bcdf3e48a49b3}} 
+\index{Graph.\+h@{Graph.\+h}!has\+\_\+node@{has\+\_\+node}}
+\index{has\+\_\+node@{has\+\_\+node}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{has\+\_\+node()}{has\_node()}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ \\
+bool has\+\_\+node (\begin{DoxyParamCaption}\item[{const Graph\+SP$<$ I, W, D, Graph\+Type $>$}]{graph,  }\item[{const Node\+SP$<$ I, D $>$}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Implementation independent function checks if the \hyperlink{class_node}{Node} x is a member of the Graph graph. \mbox{\Hypertarget{_graph_8h_ae97c3cc1148ab3f37adf6d3c924c51de}\label{_graph_8h_ae97c3cc1148ab3f37adf6d3c924c51de}} 
+\index{Graph.\+h@{Graph.\+h}!neighbours@{neighbours}}
+\index{neighbours@{neighbours}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{neighbours()}{neighbours()}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ \\
+vector$<$Node\+SP$<$I, D$>$ $>$ neighbours (\begin{DoxyParamCaption}\item[{const Graph\+SP$<$ I, W, D, Graph\+Type $>$}]{graph,  }\item[{const Node\+SP$<$ I, D $>$}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Implementation independent function returns a vector of Nodes adjacent to node src in graph. \mbox{\Hypertarget{_graph_8h_a3617368d7e1fb941e8e2acafea1abfda}\label{_graph_8h_a3617368d7e1fb941e8e2acafea1abfda}} 
+\index{Graph.\+h@{Graph.\+h}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{operator"!=()}{operator!=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename I , typename D $>$ \\
+bool operator!= (\begin{DoxyParamCaption}\item[{const Node\+SP$<$ I, D $>$ \&}]{lhs,  }\item[{const Node\+SP$<$ I, D $>$ \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Same idea as for (==) operator. \mbox{\Hypertarget{_graph_8h_ae8c549a4f5dcacc39b51e79f4baad408}\label{_graph_8h_ae8c549a4f5dcacc39b51e79f4baad408}} 
+\index{Graph.\+h@{Graph.\+h}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{operator"!=()}{operator!=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D $>$ \\
+bool operator!= (\begin{DoxyParamCaption}\item[{const Edge\+SP$<$ I, W, D $>$}]{lhs,  }\item[{const Edge\+SP$<$ I, W, D $>$}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Same idea as for (==) operator. \mbox{\Hypertarget{_graph_8h_ae18cd7b9a5980c9c0ab0493158c35003}\label{_graph_8h_ae18cd7b9a5980c9c0ab0493158c35003}} 
+\index{Graph.\+h@{Graph.\+h}!operator==@{operator==}}
+\index{operator==@{operator==}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename I , typename D $>$ \\
+bool operator== (\begin{DoxyParamCaption}\item[{const Node\+SP$<$ I, D $>$ \&}]{lhs,  }\item[{const Node\+SP$<$ I, D $>$ \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+The operator that compares the shared\+\_\+pointers to Nodes, so the user does not have to worry about the exact details. \mbox{\Hypertarget{_graph_8h_a2fe1888ae31f5115fd1fcfd2cf54d8d1}\label{_graph_8h_a2fe1888ae31f5115fd1fcfd2cf54d8d1}} 
+\index{Graph.\+h@{Graph.\+h}!operator==@{operator==}}
+\index{operator==@{operator==}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D $>$ \\
+bool operator== (\begin{DoxyParamCaption}\item[{const Edge\+SP$<$ I, W, D $>$}]{lhs,  }\item[{const Edge\+SP$<$ I, W, D $>$}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+The operator that compares the shared\+\_\+pointers to Edges, so the user does not have to worry about the exact details. \mbox{\Hypertarget{_graph_8h_a5377bb03d49916497218904cc56640b0}\label{_graph_8h_a5377bb03d49916497218904cc56640b0}} 
+\index{Graph.\+h@{Graph.\+h}!print\+\_\+edges@{print\+\_\+edges}}
+\index{print\+\_\+edges@{print\+\_\+edges}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{print\+\_\+edges()}{print\_edges()}}
+{\footnotesize\ttfamily template$<$typename Id\+Type , typename Weight\+Type , typename Data\+Type $>$ \\
+void print\+\_\+edges (\begin{DoxyParamCaption}\item[{vector$<$ shared\+\_\+ptr$<$ \hyperlink{class_edge}{Edge}$<$ Id\+Type, Weight\+Type, Data\+Type $>$$>$$>$ \&}]{edges }\end{DoxyParamCaption})}
+
+A simple printer to print a vector of Edges \mbox{\Hypertarget{_graph_8h_aa79458c819d73746aa76e4a3456c277d}\label{_graph_8h_aa79458c819d73746aa76e4a3456c277d}} 
+\index{Graph.\+h@{Graph.\+h}!print\+\_\+nodes@{print\+\_\+nodes}}
+\index{print\+\_\+nodes@{print\+\_\+nodes}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{print\+\_\+nodes()}{print\_nodes()}}
+{\footnotesize\ttfamily template$<$typename Id\+Type , typename Data\+Type $>$ \\
+void print\+\_\+nodes (\begin{DoxyParamCaption}\item[{vector$<$ shared\+\_\+ptr$<$ \hyperlink{class_node}{Node}$<$ Id\+Type, Data\+Type $>$$>$$>$ \&}]{node\+\_\+ps }\end{DoxyParamCaption})}
+
+A simple printer to print a vector of Nodes \mbox{\Hypertarget{_graph_8h_acbd7e49db3f5da6cc4b88ca9f9ae3bda}\label{_graph_8h_acbd7e49db3f5da6cc4b88ca9f9ae3bda}} 
+\index{Graph.\+h@{Graph.\+h}!remove\+\_\+edge@{remove\+\_\+edge}}
+\index{remove\+\_\+edge@{remove\+\_\+edge}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{remove\+\_\+edge()}{remove\_edge()}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ \\
+bool remove\+\_\+edge (\begin{DoxyParamCaption}\item[{const Graph\+SP$<$ I, W, D, Graph\+Type $>$}]{graph,  }\item[{const Node\+SP$<$ I, D $>$}]{src,  }\item[{const Node\+SP$<$ I, D $>$}]{dst }\end{DoxyParamCaption})}
+
+Implementation independent function removes an \hyperlink{class_edge}{Edge} to the graph. Exception if either src or dst are not part of the graph, or if the two Nodes are already disjoint \mbox{\Hypertarget{_graph_8h_a33646d862b17257a284aa7011a35a25c}\label{_graph_8h_a33646d862b17257a284aa7011a35a25c}} 
+\index{Graph.\+h@{Graph.\+h}!remove\+\_\+node@{remove\+\_\+node}}
+\index{remove\+\_\+node@{remove\+\_\+node}!Graph.\+h@{Graph.\+h}}
+\subsubsection{\texorpdfstring{remove\+\_\+node()}{remove\_node()}}
+{\footnotesize\ttfamily template$<$typename I , typename W , typename D , template$<$ typename, typename, typename $>$ typename Graph\+Type$>$ \\
+bool remove\+\_\+node (\begin{DoxyParamCaption}\item[{const Graph\+SP$<$ I, W, D, Graph\+Type $>$}]{graph,  }\item[{const Node\+SP$<$ I, D $>$}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Implementation independent function removes a \hyperlink{class_node}{Node} to the graph. Exception if \hyperlink{class_node}{Node} already removed. 
