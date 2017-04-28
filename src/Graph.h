@@ -5,6 +5,8 @@
 #include "graph_concepts.h"
 #include "Edge.h"
 #include "Node.h"
+#include "GraphAL.h"
+#include "GraphAM.h"
 
 using namespace std;
 

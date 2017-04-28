@@ -1,12 +1,11 @@
 #include <string>
 #include <iostream>
 
-#include "GraphAL.h"
+
 #include "Graph.h"
 #include "algo.h"
 #include "utility.h"
 
-#include "GraphAM.h"
 
 
 int main(){
