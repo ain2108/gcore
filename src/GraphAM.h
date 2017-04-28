@@ -11,7 +11,7 @@
 #include <utility>
 
 //#include "graph_concepts.h"
-#include "Graph.h"
+#include "gcore.h"
 #include "SquareMatrix.h"
 
 

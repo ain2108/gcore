@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-#include "Graph.h"
+#include "gcore.h"
 #include "algo.h"
 #include "utility.h"
 

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <assert.h>
 
-#include "../../src/Graph.h"
+#include "../../src/gcore.h"
 
 int main(){
 
