@@ -2,9 +2,9 @@
 #include <iostream>
 
 
-#include "gcore.h"
-#include "algo.h"
-#include "utility.h"
+#include "../src/gcore.h"
+#include "../src/algo.h"
+#include "../src/utility.h"
 
 
 
@@ -201,7 +201,7 @@ int main(){
 
 	cout << "Print DFS rooted at C\n";
 	auto dfsn3 = dfs(g1, n3);
-	dfsn2->print_graph();
+	dfsn3->print_graph();
 
 	// Build a graph from multiple edges and nodes (make sure to add nodes first`)
 	cout << "Lets build a graph from edges and nodes of g1\n";
