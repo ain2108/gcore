@@ -46,7 +46,6 @@ inline shared_ptr<GraphType<I, W, D>> create_graph(){
 	return GraphType<I, W, D>::create_graph();
 }
 
-
 /*! Function compares two edges by the (<) if the Weight */
 template <typename IdType, typename Weight, typename DataType>
 requires Comparable<IdType> && Numeric<Weight>
@@ -79,7 +78,7 @@ void print_edges(vector<shared_ptr<Edge<IdType, WeightType, DataType>>>& edges){
 
 /*! Utility function that adds all Nodes in the input vector to the given graph */
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
-requires Comparable<I> && Numeric<W>
+requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
 inline void add_nodes(shared_ptr<GraphType<I, W, D>> g, const vector<shared_ptr<Node<I, D>>>& node_ps){
 
 	for(auto node_p : node_ps){
@@ -91,7 +90,7 @@ inline void add_nodes(shared_ptr<GraphType<I, W, D>> g, const vector<shared_ptr<
 
 /*! Utility function that adds all Edges in the input vector to the given graph */
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
-requires Comparable<I> && Numeric<W>
+requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
 inline void add_edges(shared_ptr<GraphType<I, W, D>> g, const vector<shared_ptr<Edge<I, W, D>>>& edge_ps){
 
 	for(auto edge_p : edge_ps){
@@ -114,21 +113,21 @@ using GraphSP = shared_ptr<GraphType<I, W, D>>;
 
 /*! Implementation independent function checks if the Node x is a member of the Graph graph. */ 
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
-requires Comparable<I> && Numeric<W>
+requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
 inline bool has_node(const GraphSP<I, W, D, GraphType> graph, const NodeSP<I, D> x){
 	return graph->has_node(x);
 }
 
 /*! Implementation independent function checks if the Edge e is a member of the Graph graph. */ 
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
-requires Comparable<I> && Numeric<W>
+requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
 inline bool has_edge(const GraphSP<I, W, D, GraphType> graph, EdgeSP<I, W, D> e){
 	return graph->has_edge(e->get_src(), e->get_weight(), e->get_dst());
 }
 
 /*! Implementation independent function checks if the Edge e is a member of the Graph graph. */ 
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
-requires Comparable<I> && Numeric<W>
+requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
 inline bool has_edge(const GraphSP<I, W, D, GraphType> graph, const NodeSP<I, D> src, const W w, 
 		const NodeSP<I, D> dst){
 	return graph->has_edge(src, w, dst);
@@ -136,7 +135,7 @@ inline bool has_edge(const GraphSP<I, W, D, GraphType> graph, const NodeSP<I, D>
 
 /*! Implementation independent function returns a vector of Edges of Node x in graph. */ 
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
-requires Comparable<I> && Numeric<W>
+requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
 inline vector<EdgeSP<I, W, D>> edges_of_node(const GraphSP<I, W, D, GraphType> graph,
 	const NodeSP<I, D> x){
 	return graph->edges_of_node(x);
@@ -144,7 +143,7 @@ inline vector<EdgeSP<I, W, D>> edges_of_node(const GraphSP<I, W, D, GraphType> g
 
 /*! Implementation independent function returns a vector of all Edges in graph. */ 
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
-requires Comparable<I> && Numeric<W>
+requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
 inline vector<EdgeSP<I, W, D>> get_edges(const GraphSP<I, W, D, GraphType> graph){
 	return graph->get_edges();
 }
@@ -152,28 +151,28 @@ inline vector<EdgeSP<I, W, D>> get_edges(const GraphSP<I, W, D, GraphType> graph
 /*! Implementation independent function returns the Edge object that representing the Edge between src and
 dst in graph */ 
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
-requires Comparable<I> && Numeric<W>
+requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
 inline EdgeSP<I, W, D> get_edge(const GraphSP<I, W, D, GraphType> graph, NodeSP<I, D> src, NodeSP<I, D> dst){
 	return graph->get_edge(src, dst);
 }
 
 /*! Implementation independent function returns a vector of all Nodes in graph. */ 
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
-requires Comparable<I> && Numeric<W>
+requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
 inline vector<NodeSP<I, D>> get_nodes(const GraphSP<I, W, D, GraphType> graph){
 	return graph->get_nodes();
 }
 
 /*! Implementation independent function returns a vector of Nodes adjacent to node src in graph. */ 
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
-requires Comparable<I> && Numeric<W>
+requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
 inline vector<NodeSP<I, D>> neighbours(const GraphSP<I, W, D, GraphType> graph, const NodeSP<I, D> src){
 	return graph->neighbours(src);
 }
 
 /*! Implementation independent function returns boolean value reflecting the adjacency of src and dst in graph */ 
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
-requires Comparable<I> && Numeric<W>
+requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
 inline bool adjacent(const GraphSP<I, W, D, GraphType> graph, 
 	const NodeSP<I, D> src, 
 	const NodeSP<I, D> dst){
@@ -182,14 +181,14 @@ inline bool adjacent(const GraphSP<I, W, D, GraphType> graph,
 
 /*! Implementation independent function adds a Node to the graph. Exception if Node already added. */ 
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
-requires Comparable<I> && Numeric<W>
+requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
 inline bool add_node(const GraphSP<I, W, D, GraphType> graph, const NodeSP<I, D> x){
 	return graph->add_node(x);
 }
 
 /*! Implementation independent function removes a Node to the graph. Exception if Node already removed. */ 
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
-requires Comparable<I> && Numeric<W>
+requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
 inline bool remove_node(const GraphSP<I, W, D, GraphType> graph, const NodeSP<I, D> x){
 	return graph->remove_node(x);
 }
@@ -198,7 +197,7 @@ inline bool remove_node(const GraphSP<I, W, D, GraphType> graph, const NodeSP<I,
 /*! Implementation independent function adds an Edge to the graph. Exception if either src or dst are not 
 part of the graph, or if they are already adjacent*/ 
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
-requires Comparable<I> && Numeric<W>
+requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
 inline bool add_edge(const GraphSP<I, W, D, GraphType> graph, const NodeSP<I, D> src, const W w, const NodeSP<I, D> dst){
 	return graph->add_edge(src, w, dst);
 }
@@ -206,7 +205,7 @@ inline bool add_edge(const GraphSP<I, W, D, GraphType> graph, const NodeSP<I, D>
 /*! Implementation independent function adds an Edge to the graph. Exception if either src or dst are not 
 part of the graph, or if they are already adjacent*/ 
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
-requires Comparable<I> && Numeric<W>
+requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
 inline bool add_edge(const GraphSP<I, W, D, GraphType> graph, const EdgeSP<I, W, D> e){
 	return graph->add_edge(e->get_src(), e->get_weight(), e->get_dst());
 }
@@ -214,7 +213,7 @@ inline bool add_edge(const GraphSP<I, W, D, GraphType> graph, const EdgeSP<I, W,
 /*! Implementation independent function removes an Edge to the graph. Exception if either src or dst are not 
 part of the graph, or if the two Nodes are already disjoint */ 
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
-requires Comparable<I> && Numeric<W>
+requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
 bool remove_edge(const GraphSP<I, W, D, GraphType> graph, const NodeSP<I, D> src, const NodeSP<I, D> dst){
 	return graph->remove_edge(src, dst);
 }
@@ -254,5 +253,49 @@ inline bool operator!=(const EdgeSP<I, W, D> lhs,
 	const EdgeSP<I, W, D> rhs){
 	return !(lhs == rhs);
 }
+
+/* Comparison of graphs using (==) */
+/*! Two graphs, G = (V, E) and G' = (V', E'), are equal if V == V' and E == E'. NOTE: this is different
+from checking for isomorphism between G and G'! */
+template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
+//requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
+inline bool operator==(const GraphSP<I, W, D, GraphType> g1, const GraphSP<I, W, D, GraphType> g2){
+
+	auto nodes_of_g1 = get_nodes(g1);
+	auto nodes_of_g2 = get_nodes(g2);
+
+	/* TODO: accelerate this maybe by sorting the nodes first?*/
+	for(auto node_of_g1 : nodes_of_g1){
+		
+		auto it = std::find(nodes_of_g2.begin(), nodes_of_g2.end(), node_of_g1);
+		if(it != nodes_of_g2.end()){
+			std::swap(*it, nodes_of_g2.back());
+			nodes_of_g2.pop_back();
+		}else{
+			return false;
+		}
+
+	}
+
+	if(nodes_of_g2.size()){
+		return false;
+	}
+
+
+	return true;
+}
+
+/* COPY functions */
+template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
+requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
+inline shared_ptr<GraphType<I, W, D>> copy_graph(const GraphSP<I, W, D, GraphType> g){
+	
+	auto g_copy = create_graph<I, W, D, GraphType>();
+	add_nodes(g_copy, get_nodes(g));
+	add_edges(g_copy, get_edges(g));
+
+	return g_copy;
+}
+
 
 #endif
