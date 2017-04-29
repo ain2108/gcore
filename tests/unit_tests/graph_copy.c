@@ -32,7 +32,7 @@ int main(){
 	auto g_copy = copy_graph<string, int, int, GraphAL>(g);
 	assert((g_copy == g) && "Graph equality failes");
 
-	cout << "Graph_copy: OK\n";
+	cout << "graph_copy: OK\n";
 
 	return 0;
 }

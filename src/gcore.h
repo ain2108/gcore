@@ -265,6 +265,7 @@ inline bool operator==(const GraphSP<I, W, D, GraphType> g1, const GraphSP<I, W,
 	auto nodes_of_g2 = get_nodes(g2);
 
 	/* TODO: accelerate this maybe by sorting the nodes first?*/
+	/* Lets compare the node sets first */
 	for(auto node_of_g1 : nodes_of_g1){
 		
 		auto it = std::find(nodes_of_g2.begin(), nodes_of_g2.end(), node_of_g1);
@@ -276,11 +277,28 @@ inline bool operator==(const GraphSP<I, W, D, GraphType> g1, const GraphSP<I, W,
 		}
 
 	}
-
 	if(nodes_of_g2.size()){
 		return false;
 	}
 
+	/* Lets compare the edge sets now */
+	auto edges_of_g1 = get_edges(g1);
+	auto edges_of_g2 = get_edges(g2);
+
+
+	for(auto edge_of_g1 : edges_of_g1){
+		
+		auto it = std::find(edges_of_g2.begin(), edges_of_g2.end(), edge_of_g1);
+		if(it != edges_of_g2.end()){
+			std::swap(*it, edges_of_g2.back());
+			edges_of_g2.pop_back();
+		}else{
+			return false;
+		}
+	}
+	if(edges_of_g2.size()){
+		return false;
+	}
 
 	return true;
 }
