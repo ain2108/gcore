@@ -54,21 +54,57 @@ public:
 	}
 
 
-	// bool has_edge(const shared_ptr<Node<IdType, DataType>> src, const WeightType w, 
-	// 	const shared_ptr<Node<IdType, DataType>> dst);
+	bool has_edge(const shared_ptr<Node<IdType, DataType>> src, const WeightType w, 
+		const shared_ptr<Node<IdType, DataType>> dst){
+
+		/* First we need to check if the nodes are in the graph */
+		if(!nodes_in_graph(src, dst)){
+			return false;
+		}
+
+		/* Get hold of the wrappers */
+		auto src_p = get_wrapper_p(src);
+		auto dst_p = get_wrapper_p(dst);
+
+		if(!adjacent(src_p, dst_p)){
+			return false;
+		}
+
+		auto weight = adjacency_matrix.get_entry(src_p->internal_id, dst_p->internal_id);
+		if(weight != w)
+			return false;
+
+		return true;
+	}
 
 	// /* Returns all the outgoing edges from a given node */
-	// vector<shared_ptr<Edge<IdType, WeightType, DataType>>> edges_of_node(const shared_ptr<Node<IdType, DataType>> x);
+	vector<shared_ptr<Edge<IdType, WeightType, DataType>>> edges_of_node(const shared_ptr<Node<IdType, DataType>> x){
+		vector<shared_ptr<Edge<IdType, WeightType, DataType>>> temp;
+		throw std::invalid_argument("function not implemented");
+		return temp;
+	}
 
-	// /* Returns a vector of all eges in the graph */
-	// vector<shared_ptr<Edge<IdType, WeightType, DataType>>> get_edges();
+	/* Returns a vector of all eges in the graph */
+	vector<shared_ptr<Edge<IdType, WeightType, DataType>>> get_edges(){
+		vector<shared_ptr<Edge<IdType, WeightType, DataType>>> temp;
+		throw std::invalid_argument("function not implemented");
+		return temp;
+	}
 
 	// /* Returns an edge between two nodes in a graph, if such exists. Throws exp otherwise */
-	// shared_ptr<Edge<IdType, WeightType, DataType>> get_edge(shared_ptr<Node<IdType, DataType>> src,
-	// 	shared_ptr<Node<IdType, DataType>> dst);
+	shared_ptr<Edge<IdType, WeightType, DataType>> get_edge(shared_ptr<Node<IdType, DataType>> src,
+		shared_ptr<Node<IdType, DataType>> dst){
+		shared_ptr<Edge<IdType, WeightType, DataType>> temp;
+		throw std::invalid_argument("function not implemented");
+		return temp;
+	}
 
 	// /* Returns the nodes of the graph */
-	// vector<shared_ptr<Node<IdType, DataType>>> get_nodes();
+	vector<shared_ptr<Node<IdType, DataType>>> get_nodes(){
+		vector<shared_ptr<Node<IdType, DataType>>> temp;
+		throw std::invalid_argument("function not implemented");
+		return temp;
+	}
 
 	/* Function return the neighbours of the node */
 	vector<shared_ptr<Node<IdType, DataType>>> neighbours(const shared_ptr<Node<IdType, DataType>> src){
@@ -160,6 +196,11 @@ public:
 		id_map.erase(x->get_id());
 
 		return true;
+	}
+
+	/* Adds an edge to the graph */
+	inline bool add_edge(shared_ptr<Edge<IdType, WeightType, DataType>> e){
+		return add_edge(e->get_src(), e->get_weight(), e->get_dst());
 	}
 
 	bool add_edge(const shared_ptr<Node<IdType, DataType>> src, const WeightType w, 

@@ -68,8 +68,7 @@ public:
 		NodeAL<IdType, WeightType, DataType> * src_p = get_wrapper_p(src);
 		NodeAL<IdType, WeightType, DataType> * dst_p = get_wrapper_p(dst);
 
-		/* Check if the edge already exists, if it does, 
-		throw an exception */
+
 		if(!adjacent(src_p, dst_p)){
 			return false;
 		}

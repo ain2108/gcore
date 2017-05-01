@@ -199,7 +199,7 @@ part of the graph, or if they are already adjacent*/
 template <typename I, typename W, typename D, template <typename, typename, typename> typename GraphType>
 requires Comparable<I> && Numeric<W> && IsGraph<I, W, D, GraphType>
 inline bool add_edge(const GraphSP<I, W, D, GraphType> graph, const NodeSP<I, D> src, const W w, const NodeSP<I, D> dst){
-	return graph->add_edge(src, w, dst);
+	return graph->add_edge(create_edge(src, w, dst));
 }
 
 /*! Implementation independent function adds an Edge to the graph. Exception if either src or dst are not 
