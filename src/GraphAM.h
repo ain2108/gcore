@@ -102,7 +102,13 @@ public:
 	/* Returns a vector of all eges in the graph */
 	vector<shared_ptr<Edge<IdType, WeightType, DataType>>> get_edges(){
 		vector<shared_ptr<Edge<IdType, WeightType, DataType>>> temp;
-		throw std::invalid_argument("function not implemented");
+		
+		auto nodes = get_nodes();
+		for(auto src : nodes){
+			auto edges = edges_of_node(src);
+			temp.insert(temp.end(), edges.begin(), edges.end());
+		}
+
 		return temp;
 	}
 
