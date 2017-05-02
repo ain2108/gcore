@@ -5,27 +5,26 @@ gcore: A small, simple, generic and robust graph library
 
 Anton Nefedenkov
 
-1. Introduction
+##1. Introduction
 
 The gcore is a very small graph library that provides two implementations: adjacency list and adjacency matrix. An important idea behind gcore is separation between implementation and idea, thus the algorithms provided by gcore are agnostic to the implementation of the graph they are run on. Generality of gcore starts from the two implementations that are provided by the library, but it by no means ends there. The user is allowed to provide their own implementation for a graph, and as long as this implementation has the required functions, all the algorithms will behave as expected. This way, the user is given not only the flexibility of custom and safe optimization, but also semantic flexibility. One could for example provide a probabilistic implementation for a graph to achieve probabilistic behavior of the algorithms. More specifically, say a node in the graph has probabilistic edges. All what the user needs to do is to override the “neighbors” function and voilà!  
 The library is written in modern C++, and it was my intention for the user to be encouraged to use the newer features of C++ (more on how this is encouraged in the tutorial).  The library makes use of concepts, which is a feature available in GCC6 to save the user from the pain of template error messages.
 Before delving into the details of design, I would like to present the vision that I have for graphs. This vision has heavily influenced my design decisions.
 
-2. What is a Graph? What is a Node? What is an Edge?
+##2. What is a Graph? What is a Node? What is an Edge?
 
-	Lets discuss the theory a little. A graph G=(V,E) where V is the set of nodes, and E is the set of edges. So however we decide to implement a graph, that implementation should have a routine to add_node and add_edge. Now consider the situation where we have V^'⊂V and we have another graph G^'=(V^',〖 E〗^'). We say that G and G' share nodes V'. In the world of implementation, the idea of sharing a node translates to not having separate copies i.e G and G' have access to some shared memory. This means, that when add_node adds a node to a graph, it should not make a copy of that node. Not only does this save us memory, but it also has correct semantics. At the same time, if one removes a node from G', this should not impact the structure of G. 
+Lets discuss the theory a little. A graph G=(V,E) where V is the set of nodes, and E is the set of edges. So however we decide to implement a graph, that implementation should have a routine to add_node and add_edge. Now consider the situation where we have V^'⊂V and we have another graph G^'=(V^',〖 E〗^'). We say that G and G' share nodes V'. In the world of implementation, the idea of sharing a node translates to not having separate copies i.e G and G' have access to some shared memory. This means, that when add_node adds a node to a graph, it should not make a copy of that node. Not only does this save us memory, but it also has correct semantics. At the same time, if one removes a node from G', this should not impact the structure of G. 
 In other words, nodes are just points on a plane, that should be able to exist without being part of any graph, just like it makes sense to talk about the set V without any mention of G or G'. Graphs in turn, should be defined on top of these nodes, namely by providing information on connectedness between the nodes that are part of a given graph. Notice, that given u∉V and v∈V it is completely senseless to ask if u and v are connected for two reasons. To ask this question we have to be in the context of a graph, because that is what stores the information about connections. Lets say we have a graph G=(V,E) like before, and we ask G this question. Asking this question is still senseless, because for what G knows, node u does not exist in its universe. To sum up, question of connectedness of u and v in graph G=(V,E) can only be asked if and only if u∈V and v∈V. These properties, again, give very strong suggestions on the design of the library.
 We now have a good level of understanding of the expected semantics for the future graph and node objects. What about edges? Intuitively, for an edge to be an edge it has to possess three pieces of information: its source node, its weight and its destination node. Just like in the case of nodes, talking about a set of edges E independent of any graph should also make sense. Elements of such set describe a relationship between two nodes. We should be able to get hold of an edge e and add that edge to graphs G,G^' and G^'' for instance. Crucial observation is that add_edge(G, e) only makes sense if both source node and destination node of e are already elements of V with G=(V,E). Trivially, we also observe that there is nothing wrong with a graph G^*=(V,∅), a graph that is only made of nodes. While all the points discussed above have little controversy in them, the next and final observation is my personal leap of faith.
 When looking at popular graph libraries I noticed a both intuitive and counterintuitive feature. It is often the case that that the routine of node addition has the following form: add_node(G, “A”). And here is my leap of faith: I do not believe that this is semantically sound. I have looked for a good argument, but all I have is a gut feeling. The idea of graphs being made of nodes and edges is so entrenched in my head, that having a graph made of characters and edges, numbers and edges or cars and edges just does not sit right with me. 
 Graphs are made of nodes, not of cars!
 
-3. Library Architecture Overview
+##3. Library Architecture Overview
 
 The discussion above has directly impacted the design of the library. There are only two user facing classes: Node and Edge. Both of these can only be created through a call to their respective creation routines. The creation routines make an allocation of the object on the heap, and return a smart pointer to the object. The idea is that there should be no way for the user to get her hands on Node or Edge without going through the creation routine.
 There is a third creation routine: the create_graph. Same thing as for Node creation – pointer to a heap allocated instance. What is interesting is that one of the template arguments to this routine will specify the implementation that is to be used with this graph. So if the user intends for the new graph to be complete, the adjacency matrix implementation represented by GraphAM class is the way to go. If the graph is going to be sparse, using adjacency list GraphAL class is a better call. At the same time, if the user wants some custom optimized implementation, she can provides it to the create_graph just like she would GraphAL or GraphAM.
 There is a set of routines that form basis for graph operations. GraphAL and GraphAM of course provide all of these as member functions. The implementions in fact provide more, simply because when some operations are made implementation dependent, even though they do not strictly have to be, a performance boost is guaranteed. One example is get_edges that can easily be implemented in terms of basis functions, but very inefficiently. That said, each implementation provides a grand total of 14 member functions that are used by all the algorithms of gcore. So it seems like a nice trade-off between performance and comfort. The only minus, is that if user wants to use their own implementation, they will have to provide all 14 implementation dependent functions.
-4. Library Architecture Details
-
+##4. Library Architecture Details
 gcore.h:
 This is the main user-facing file. As mentioned previously it provides the three creation routines:
 
@@ -58,7 +57,7 @@ More detail on how to use the interface of the library is provided in the tutori
 GraphAM.h and GraphAL.h:
 These files contain the two implementations provided by the library. I will discuss the specifics of the implementations in the next sections, but what seems to be important to mention, that the member functions in these files are exactly the ones called by the implementation independent wrappers of gcore.h.
 
-5. Adjacency List Implementation: GraphAL class
+##5. Adjacency List Implementation: GraphAL class
 
 The semantics described in Section 2 turned out to be quite difficult to implement. Since we want to be able to build multiple graphs on the same set of Node objects, the graph object must be able to keep track of which Node objects are part of the graph without owning the Node objects at the same time. This setup required introduction of a supporting wrapper class NodeAL; instances of these class are going to be managed by a given graph object.
 Whenever a Node is added to the graph, a NodeAL is created. The wrapper stores the smart pointer to the underlying node and some auxiliary information to assist performance. Pointer to the NodeAL wrapper is what is ultimately added to the adjacency list. To differentiate between different NodeAL objects of the graph, every NodeAL is assigned a unique integer id at creation. To avoid running out of ids, id recycling is provided by the GraphAL. When a Node is removed from the graph, its NodeAL wrapper is deleted and the id is recycled. Recycling is implemented by keeping around a vector of returned ids. 
@@ -76,7 +75,7 @@ I am using a simple vector of pointer to the wrappers. When new Node is added, a
 
 Notice how the vector stores a pair instead of storing the actual Edge objects. This saves us memory because we already know the source node, so we only need to store the neighbor Node and the weight of the connecting edge. As an aside, the use of a naked pointer might not seem too prudent. The truth is that NodeAL objects are exclusively created as part of add_node routine, and deleted in only two places: the destructor and the remove_node routine. So it seemed beneficial for the performance to avoid the usage of smart pointers for this particular object.
 
-6. Adjacency Matrix Implementation: GraphAM class
+##6. Adjacency Matrix Implementation: GraphAM class
 
 	The adjacency matrix implementation proved to be trickier than the adjacency list implementation. One important factor that jumps immediately to our attention is the management of the actual matrix. Implementing it as a vector of pointers to vectors did not seem like a prudent idea. Whenever an element is added to the matrix, the matrix has to be grown in both dimensions. I have considered few matrix manipulation libraries, but they did not seem to provide exactly what I needed. So I ended up writing a supporting class SquareMatrix.
 	SquareMatrix is a simple class that supports only few operations. The square matrix is represented as follows:
@@ -90,7 +89,7 @@ map<int, NodeAM<IdType, WeightType, DataType>*> wrapper_map;
 
 It becomes apparent why this map is necessary if we consider what happens when we call neighbors routine on a Node. The function takes a Node as an input, so we proceed to finding the wrapper using the id_map described previously. This way we get our hands on the wrapper, and therefore on its internal id, and therefore on the row where the Node is represented in the graph. Now we need to walk through each entry in that row, and if the entry is not zero, we know that our input is adjacent to the Node represented by the given column. This is where we need the map to go from the column index to the NodeAL object, so we can in turn get the underlying Node object.
 
-7. Tutorial
+##7. Tutorial
 
 Lets create few nodes to get ourselves started:
 
@@ -191,7 +190,7 @@ dfsn2->print_graph();
 
 Often times we don’t really want to add node after node after node. It is nice to add an entire vector of nodes directly to the graph.
 	
-// Build a graph from multiple edges and nodes (make sure to add nodes first`)
+// Build a graph from multiple edges and nodes (make sure to add nodes first)
 cout << "Lets build a graph from edges and nodes of g1\n";
 auto node_v = get_nodes(g1);
 auto edges_v = get_edges(g1);
@@ -202,16 +201,16 @@ g2->print_graph();
 
 As you can see, the library provides sufficient flexibility to satisfy the needs of the user while maintaining very robust state. 
 
-8. Running the code 
+##8. Running the code 
 
 To compile the code requires GCC6. 
 The following compilation flags are a must: -fconcepts -std=c++1z
 
-9. Future Work
+##9. Future Work
 
 In future, there is a lot of work that has to be done to make gcore usable. Most importantly, it is quintessential to add a range of utility functions that would allow importing graph data from a file. Without this, nothing realistic can be done using gcore. Next, it is necessary to significantly expand the algo.h file: populate it with an array of basic algorithms that would allow effortless construction of more complicated routines. From the newly gained knowledge, it is then important to optimize the two implementations provided by the library for speed; some of the code can be rewritten to better adhere to the C++ Core Guidelines in the process.
 
-10. References
+##10. References
 
 The small cars:
 http://www.clker.com/clipart-blue-car-very-small.html
