@@ -77,10 +77,25 @@ public:
 		return true;
 	}
 
-	// /* Returns all the outgoing edges from a given node */
-	vector<shared_ptr<Edge<IdType, WeightType, DataType>>> edges_of_node(const shared_ptr<Node<IdType, DataType>> x){
+	/* Returns all the outgoing edges from a given node */
+	vector<shared_ptr<Edge<IdType, WeightType, DataType>>> edges_of_node(const shared_ptr<Node<IdType, DataType>> src){
+		
+		/* Fill in with edges */
 		vector<shared_ptr<Edge<IdType, WeightType, DataType>>> temp;
-		throw std::invalid_argument("function not implemented");
+
+		auto row = get_wrapper_p(src)->internal_id;
+
+		/* Get the indices of the entries that are not zero in the table */
+		auto indices = adjacency_matrix.non_zero_entries(row);
+
+		/* For each of these indices, get hold of the information about the edge,
+		construct the edge and add it to the return vector*/
+		for(auto column_index : indices){
+			temp.push_back(
+				create_edge(src, adjacency_matrix.get_entry(row, column_index), 
+				wrapper_map[column_index]->user_node_p));
+		}
+
 		return temp;
 	}
 
@@ -91,18 +106,26 @@ public:
 		return temp;
 	}
 
-	// /* Returns an edge between two nodes in a graph, if such exists. Throws exp otherwise */
+	/* Returns an edge between two nodes in a graph, if such exists. Throws exp otherwise */
 	shared_ptr<Edge<IdType, WeightType, DataType>> get_edge(shared_ptr<Node<IdType, DataType>> src,
 		shared_ptr<Node<IdType, DataType>> dst){
-		shared_ptr<Edge<IdType, WeightType, DataType>> temp;
-		throw std::invalid_argument("function not implemented");
-		return temp;
+		
+		if(!this->adjacent(src, dst))
+			throw std::invalid_argument("edge does not exist");
+
+		auto src_p = get_wrapper_p(src);
+		auto dst_p = get_wrapper_p(dst);
+
+		auto weight = adjacency_matrix.get_entry(src_p->internal_id, dst_p->internal_id);
+		return create_edge(src, weight, dst);
 	}
 
-	// /* Returns the nodes of the graph */
+	/* Returns the nodes of the graph */
 	vector<shared_ptr<Node<IdType, DataType>>> get_nodes(){
 		vector<shared_ptr<Node<IdType, DataType>>> temp;
-		throw std::invalid_argument("function not implemented");
+		for(auto wrap_map_entry : wrapper_map){
+			temp.push_back(wrap_map_entry.second->user_node_p);
+		}
 		return temp;
 	}
 
@@ -169,7 +192,7 @@ public:
 
 	}
 
-	// /* Removes a node from a graph */
+	/* Removes a node from a graph */
 	bool remove_node(const shared_ptr<Node<IdType, DataType>> x){
 
 		/* Check if the vertex is already in the graph */
@@ -328,23 +351,6 @@ private:
 		
 		return true;
 	}
-
-	// auto get_edge(const NodeAL<IdType, WeightType, DataType> * src_p, 
-	// 	const NodeAL<IdType, WeightType, DataType> * dst_p){
-
-	// 	/*Lets findout if dst_p in in neghbours of src_p */
-	// 	auto it = 
-	// 	find_if(src_p->neighbours.begin(), 
-	// 	src_p->neighbours.end(),
- //    	[&](const pair<NodeAL<IdType, WeightType, DataType>*, WeightType>& element)
- //    		{return element.first == dst_p;});
-
-	// 	if(it != src_p->neighbours.end())
-	// 		return it;
-		
-	// 	//TODO: FIX
-	// 	return it;
-	// }
 };
 
 /************************* NodeAM Class ****************************/

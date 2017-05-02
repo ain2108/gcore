@@ -42,7 +42,7 @@ int main(){
 	assert((!(g_other_node == g)) && "Graph equality fails");
 	assert((!(g_other_edge == g)) && "Graph equality fails");
 	
-	cout << "equality_Node: OK\n";
+	cout << "equality_Graph: OK\n";
 
 	return 0;	
 }
