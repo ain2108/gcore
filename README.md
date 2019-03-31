@@ -92,14 +92,16 @@ It becomes apparent why this map is necessary if we consider what happens when w
 ## 7. Tutorial
 
 Lets create few nodes to get ourselves started:
-
+```cpp
 auto n1 = create_node<string, int>("A", nullptr);
 auto n2 = create_node<string, int>("B", nullptr);
 auto n3 = create_node<string, int>("C", nullptr);
 auto n4 = create_node<string, int>("D", nullptr);
+```
 
 Notice how the auto keyword is used through out the tutorial. The types of the objects returned by the interface functions are fairy complicated, so not only does the keyword alleviates one’s frustration, but also hides from the eye what is better not seen or reasoned about. Lets create a graph now and add our nodes to it:
 
+```cpp
 auto g1 = create_graph<string, int, int, GraphAL>();	
 // Add nodes to the graph 
 add_node(g1, n1);
@@ -107,62 +109,81 @@ add_node(g1, n2);
 add_node(g1, n3);
 add_node(g1, n4);
 g1->print_graph();
+```
 
 Note how we passed in GraphAL as a template parameter to the graph creation. The graph is now implemented as an adjacency list. Also not the print_graph() member call: this printer is there solely as a sanity check. Lets add few edges to our graph.
 
+```cpp
 // Add edges
 add_edge(g1, n1, 1, n3);
 add_edge(g1, n1, 1, n2);
 add_edge(g1, n4, 1, n3);
 add_edge(g1, n3, 1, n4);
+```
 
 Easy. Now lets remove a node. Notice how at node removal, all incoming edges and outgoing edges from the removed node are also deleted automatically.
 
+```cpp
 remove_node(g1, n3);
 g1->print_graph();
 // Add it back
 add_node(g1, n3);
+```
 
 
 Similarly, we can remove the edge between two nodes specifically:
 
+```cpp
 remove_edge(g1, n1, n2);
+```
 
 But we can also manipulate Edge objects. Let us try that out by creating an Edge object first and then adding it to our graph.
 
+```cpp
 auto e1 = create_edge<string, int, int>(n2, 7, n3);
 add_edge(g1, e1);
 g1->print_graph();
-
+```
 We can always check adjacency of two nodes:
+```cpp
 cout << adjacent(g1, n2, n3) << endl; // Yes it is
 cout << adjacent(g1, n3, n2) << endl; // No it is not, why?
+```
 
 Very often we want to get our hands on the neighbors of a Node:
-	
+
+```cpp
 auto v = neighbours(g1, n2);
 print_nodes(v);
+```
 
 Notice another useful printer function for sanity checks. This one prints all nodes in a vector. At other times, it is useful to get all the nodes that are part of a graph.
 
+```cpp
 auto pariticipants = get_nodes(g1);
+```
 
 We can do exactly the same thing to get all edges of a graph:
-	
+
+```cpp
 auto edges = get_edges(g1);
 print_edges(edges);
+```
 
 Lets take a look at manipulating the Node object now. Even though the Id of a Node is immutable, the data pointer is not. So we can reassign it like we want.
-	
+
+```cpp
 int a = 30;
 n1->set_data(&a);
 a = 15;
 assert(a == *n1->get_data());
+```
 
 Since graphs are only aware of the Node and not of the underlying user owned object, mutations of the object do not influence the structure of the graph. At the same time, if a user defined algorithm somehow mutates the user owned object, all graphs have immediately the updated information. 
 
 Often we want to query the graph if a Node or an Edge is part of the given graph:
 
+```cpp
 cout << has_node(g1, n4) << endl; // Yes
 remove_node(g1, n4);
 cout << has_node(g1, n4) << endl; // No
@@ -172,13 +193,18 @@ cout << has_edge(g1, e2) << endl;
 cout << "Maybe (C, 1, D)? Remember we removed D\n";
 auto e3 = create_edge<string, int, int>(n3, 1, n4);
 cout << has_edge(g1, e3) << endl;
+```
 
 Just like we get the neighbors of a node, we can also get the edges of a node:
 
+```cpp
 auto edges_of = edges_of_node(g1, n2);
 print_edges(edges_of);
+```
+
 Lets try an algorithm. Lets ask gcore to generate the dfs trees for some nodes:
 
+```cpp
 // Run DFS
 cout << "Print DFS rooted at A\n";
 auto dfsn1 = dfs(g1, n1);
@@ -187,9 +213,11 @@ dfsn1->print_graph();
 cout << "Print DFS rooted at B\n";
 auto dfsn2 = dfs(g1, n2);
 dfsn2->print_graph();
+```
 
 Often times we don’t really want to add node after node after node. It is nice to add an entire vector of nodes directly to the graph.
-	
+
+```cpp
 // Build a graph from multiple edges and nodes (make sure to add nodes first)
 cout << "Lets build a graph from edges and nodes of g1\n";
 auto node_v = get_nodes(g1);
@@ -198,6 +226,7 @@ auto g2 = create_graph<string, int, int, GraphAL>();
 add_nodes(g2, node_v);
 add_edges(g2, edges_v);
 g2->print_graph();
+```
 
 As you can see, the library provides sufficient flexibility to satisfy the needs of the user while maintaining very robust state. 
 
